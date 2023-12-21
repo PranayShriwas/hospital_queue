@@ -1,0 +1,43 @@
+<!-- queue_manager/templates/queue_manager/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Queue</title>
+    <!-- Include Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-4">Hospital Queue</h1>
+        <form method="post" action="{% url 'add_patient' %}" class="mb-4">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Patient Name:</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="urgency">Urgency:</label>
+                    <input type="number" name="urgency" class="form-control" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Patient</button>
+        </form>
+        <ul class="list-group">
+            {% for patient in patients %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ patient.name }}
+                    <span class="badge badge-primary badge-pill">Urgency: {{ patient.urgency }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Include Bootstrap JS and Popper.js from CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-eMN0eDfoSZVJpITKT1G6iI5aqXROuo5yjBp4W6Vka4FpO2G1ddZpEmWskQMZBB0" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy9QmbzljuplG7kR8x8qjk6S/JT6ldpgK2" crossorigin="anonymous"></script>
+</body>
+</html>
+``

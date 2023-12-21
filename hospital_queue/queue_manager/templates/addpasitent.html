@@ -1,0 +1,33 @@
+<!-- queue_manager/templates/queue_manager/add_patient.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patient</title>
+    <!-- Include Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Add Patient</h1>
+        <form method="post" action="{% url 'add_patient' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Patient Name:</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="urgency">Urgency:</label>
+                <input type="number" name="urgency" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Patient</button>
+        </form>
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Back to Queue</a>
+    </div>
+    <!-- Include Bootstrap JS and Popper.js from CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-eMN0eDfoSZVJpITKT1G6iI5aqXROuo5yjBp4W6Vka4FpO2G1ddZpEmWskQMZBB0" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy9QmbzljuplG7kR8x8qjk6S/JT6ldpgK2" crossorigin="anonymous"></script>
+</body>
+</html>
